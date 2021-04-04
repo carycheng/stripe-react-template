@@ -1,27 +1,25 @@
-import React, { Component } from 'react';
-import './App.css';
-import axios from 'axios'
+import React from "react";
+import './styles/CardForm.css';
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+import CheckoutForm from "./components/CheckoutForm";
 
-class App extends Component {
-  state = {
-    response: {}
-  };
-  
-  componentDidMount() {
-    axios.get('/api/v1/say-something').then((res) => {
-      const response = res.data;
-      this.setState({response});
-    });
-  }
+const keys = require('./config/keys');
 
-  render() {
-    return (
-      <div className="App">
-        <h1>Hello from the frontend!</h1>
-        <h1>{this.state.response.body}</h1>
+const stripePromise = loadStripe(keys.STRIPE_PK);
+
+const App = () => {
+  return (
+    <div className="App">
+      <div className="product">
+        <div>
+          <Elements stripe={stripePromise}>
+            <CheckoutForm />
+          </Elements>
+        </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default App;
