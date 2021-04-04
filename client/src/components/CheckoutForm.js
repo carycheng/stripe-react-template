@@ -1,5 +1,6 @@
 import React from "react";
 import { ElementsConsumer, CardElement } from "@stripe/react-stripe-js";
+import axios from 'axios';
 
 import CardSection from "./CardSection";
 
@@ -19,6 +20,10 @@ class CheckoutForm extends React.Component {
     } else {
       console.log(result.token);
     }
+
+    const response = await axios.post('/api/v1/say-something', {
+      token: result.token
+    });
   };
 
   render() {
