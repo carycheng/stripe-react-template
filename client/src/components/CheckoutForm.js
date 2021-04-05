@@ -21,9 +21,13 @@ class CheckoutForm extends React.Component {
       console.log(result.token);
     }
 
-    const response = await axios.post('/api/v1/say-something', {
+    const response = await axios.post('/api/v1/create-charge', {
       token: result.token
     });
+
+    const body = await response;
+
+    console.log(body);
   };
 
   render() {
