@@ -3,10 +3,18 @@ import { ElementsConsumer, CardElement } from "@stripe/react-stripe-js";
 import axios from 'axios';
 
 import CardSection from "./CardSection";
+import ChargeResult from './ChargeResult';
 
 class CheckoutForm extends React.Component {
+
+  state = {
+    charge: null
+  }
+
   handleSubmit = async event => {
     event.preventDefault();
+
+    console.log('in handle submit: ' + this.props.state);
 
     const { stripe, elements } = this.props;
     if (!stripe || !elements) {
@@ -25,12 +33,13 @@ class CheckoutForm extends React.Component {
       token: result.token
     });
 
-    const body = await response;
-
-    console.log(body);
+    this.setState({charge: response.data.id})
   };
 
   render() {
+    if (this.state.charge) {
+      return <div>{this.state.charge}</div>
+    }
     return (
       <div>
         <form onSubmit={this.handleSubmit}>

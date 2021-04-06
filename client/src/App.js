@@ -8,18 +8,21 @@ const keys = require('./config/keys');
 
 const stripePromise = loadStripe(keys.STRIPE_PK);
 
-const App = () => {
-  return (
-    <div className="App">
-      <div className="product">
-        <div>
-          <Elements stripe={stripePromise}>
-            <CheckoutForm />
-          </Elements>
+class App extends React.Component {
+
+  render() {
+    return (
+      <div className="App">
+        <div className="product">
+          <div>
+            <Elements stripe={stripePromise}>
+              <CheckoutForm/>
+            </Elements>
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
 };
 
 export default App;
