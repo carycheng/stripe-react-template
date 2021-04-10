@@ -32,9 +32,9 @@
     width: 100%;
     border: none;
     background: linear-gradient(
-      135deg,
-      rgb(49, 0, 62) 0%,
-      rgb(195, 40, 110) 100%
+      0.75turn,
+      #6773E5,
+      #424770
     );
     color: #fff;
     padding: 10px;
