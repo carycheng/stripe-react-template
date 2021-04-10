@@ -1,7 +1,7 @@
 import React from "react";
 import { ElementsConsumer, CardElement } from "@stripe/react-stripe-js";
 import axios from 'axios';
-
+import '../public/styles/CardForm.css';
 import CardSection from "./CardSection";
 import ChargeResult from './ChargeResult';
 

@@ -1,8 +1,9 @@
 import React from "react";
-import './styles/CardForm.css';
+import './public/styles/Landing.css';
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import CheckoutForm from "./components/CheckoutForm";
+import Header from './components/Header';
 
 const keys = require('./config/keys');
 
@@ -12,7 +13,8 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="App background-landing">
+        <Header />
         <div className="product">
           <div>
             <Elements stripe={stripePromise}>
