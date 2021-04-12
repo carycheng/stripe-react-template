@@ -13,9 +13,9 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App background-landing">
+      <div className="app background-landing">
         <Header />
-        <div className="product">
+        <div id="outer-box" className="product">
           <div>
             <Elements stripe={stripePromise}>
               <CheckoutForm/>

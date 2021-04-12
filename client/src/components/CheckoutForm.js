@@ -38,7 +38,11 @@ class CheckoutForm extends React.Component {
 
   render() {
     if (this.state.charge) {
-      return <div>{this.state.charge}</div>
+      const result = document.getElementById('outer-box');
+      result.classList.remove('product');
+      result.classList.add('result-box');
+
+      return <React.Fragment>{this.state.charge}</React.Fragment>
     }
     return (
       <div>

@@ -2,14 +2,23 @@ const keys = require('../config/keys');
 const stripe = require('stripe')(keys.STRIPE_SK);
 
 const createCharge = async (req, res, next) => {
-    const charge = await stripe.charges.create({
+
+    const paymentIntent = await stripe.paymentIntents.create({
         amount: 2000,
         currency: 'usd',
-        source: req.body.token.id,
-        description: 'Test Charge',
+        payment_method_data: {
+            type: "card",
+            card: {
+                token: req.body.token.id
+            }
+        },
+        confirm: true,
+        return_url: "http://localhost:3000/"
     });
 
-    res.send(charge);
+    console.log(paymentIntent)
+
+    res.send(paymentIntent);
 };
 
 module.exports.createCharge = createCharge;
