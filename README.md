@@ -52,7 +52,19 @@ git clone https://github.com/carycheng/merchant-store.git
 ```sh
 npm install
 ```
-3. Start the Application
+3. Add Stripe Secret Key from your account into /config/keys.js
+```
+module.exports = {
+    STRIPE_SK: 'REPLACE_STRIPE_SECRET_KEY'
+}
+```
+4. Add Stripe Public Key from your account into /client/src/config/keys.js
+```
+module.exports = {
+    STRIPE_PK: 'REPLACE_STRIPE_PUBLIC_KEY'
+}
+```
+5. Start the Application
 ```sh
 npm run dev
 ```
