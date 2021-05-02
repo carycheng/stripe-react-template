@@ -41,3 +41,27 @@ There are a few steps that are required for set up in order to get this applicat
 **Stripe API Keys**
 
 - Lastly, please be sure to have both your publishable test key and secret test key on hand!
+
+### Installation
+
+1. Clone the repo
+```sh
+git clone https://github.com/carycheng/merchant-store.git
+```
+2. CD into the root directory of the project and install NPM packages
+```sh
+npm install
+```
+3. Start the Application
+```sh
+npm run dev
+```
+<!-- Overview -->
+## Overview
+Below is a quick overview of each page and what its purpose
+
+- Use test cards to create a charge
+![Imgur](https://i.imgur.com/tpRHV4R.png)
+
+- Backend makes a call to the [PaymentIntents API](https://stripe.com/docs/api/payment_intents) to complete the transaction
+![Imgur](https://i.imgur.com/rKJeaK3.png)
