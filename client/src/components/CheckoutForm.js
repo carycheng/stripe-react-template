@@ -14,8 +14,6 @@ class CheckoutForm extends React.Component {
   handleSubmit = async event => {
     event.preventDefault();
 
-    console.log('in handle submit: ' + this.props.state);
-
     const { stripe, elements } = this.props;
     if (!stripe || !elements) {
       return;
@@ -23,17 +21,12 @@ class CheckoutForm extends React.Component {
 
     const card = elements.getElement(CardElement);
     const result = await stripe.createToken(card);
-    if (result.error) {
-      console.log(result.error.message);
-    } else {
-      console.log(result.token);
-    }
 
     const response = await axios.post('/api/v1/create-charge', {
       token: result.token
     });
 
-    this.setState({charge: response.data.id})
+    this.setState({charge: response.data})
   };
 
   render() {
@@ -42,7 +35,7 @@ class CheckoutForm extends React.Component {
       result.classList.remove('product');
       result.classList.add('result-box');
 
-      return <React.Fragment>{this.state.charge}</React.Fragment>
+      return <ChargeResult charge={this.state.charge}/>
     }
     return (
       <div>
