@@ -48,9 +48,9 @@ There are a few steps that are required for set up in order to get this applicat
 ```sh
 git clone https://github.com/carycheng/merchant-store.git
 ```
-2. CD into the root directory of the project and install NPM packages
+2. CD into the root directory of the project and install NPM packages. The below command runs npm install in both root and client directories
 ```sh
-npm install
+npm run install:all
 ```
 3. Add Stripe Secret Key from your account into /config/keys.js
 ```
